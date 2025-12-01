@@ -4,6 +4,8 @@
  */
 package Pelicula;
 
+import Entidad.Pelicula;
+import Modelo.ModelPelicula;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -113,6 +115,19 @@ public class ServletMantenimientoPelicula extends HttpServlet {
         request.setAttribute("jsp_director", director);
         request.setAttribute("jsp_actores", actores);
         request.setAttribute("jsp_sinopsis", sinopsis);
+        
+        //INSERTAMOS EN BASE DE DATOS
+        Pelicula nuevaPeli = new Pelicula();
+        nuevaPeli.setNombre(nombre);
+        nuevaPeli.setGenero(String.valueOf(genero));
+        nuevaPeli.setActores(actores);
+        nuevaPeli.setDirector(director);
+        nuevaPeli.setSinopsis(sinopsis);
+        nuevaPeli.setClasificacion(clasificacion);
+        nuevaPeli.setDuracion(duracion);
+        
+        ModelPelicula modelPelicula = new ModelPelicula();
+        modelPelicula.savePelicula(nuevaPeli);
         
         // REDIRECCION A JSP
         request.getRequestDispatcher("Pelicula.jsp").forward(request, response);
