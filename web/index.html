@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <title>Registro de Pelicula</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" type="text/css" href="css/StyleSheet.css">
+    </head>
+    <body>
+        <div id="content">
+            <form method="POST" action="ServletMantenimientoPelicula" id="dataPelicula">
+                <table class="mitabla" cellspacing="0" cellpadding="0" >
+                    <tr>
+                        <td colspan="3" class="grilla_cabecera"> Registro de Pelicula</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Nombre:</td>
+                        <td> <input type="text" name="nombre" id="nombre" class="required" /> </td>
+                        <td> <input type="button" value="Generar Nombre" id="generarNombre"  /> </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Genero:</td>
+                        <td> 
+                            <select name="idGenero">
+                                <option value="1" selected> Comedia </option>
+                                <option value="2" > Drama </option>
+                                <option value="3" > Ciencia ficción </option>
+                                <option value="4" > Romántico </option>
+                                <option value="5" > Animación </option>
+                            </select>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Clasificación:</td>
+                        <td> 
+                            <input type="radio" name="clasificacion" value="A" checked="checked" />  Apta para todos <br>
+                            <input type="radio" name="clasificacion" value="C"  />  Adultos 
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Duración</td>
+                        <td> <input type="text" name="duracion" id="duracion" class="{required: true, number: true, rangelength:[1,3]}" /> </td>
+                        <td> <input type="button" value="Generar Duración" id="generarDuracion"  /> </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Director</td>
+                        <td> <input type="text" name="director" id="director" class="required" /> </td>
+                        <td> <input type="button" value="Generar Director" id="generarDirector"  /> </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Actores</td>
+                        <td> <input type="text" name="actores" id="actores" class="required" /> </td>
+                        <td> <input type="button" value="Agregar Actor" id="generarActor"  /> </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Sinopsis</td>
+                        <td> <textarea  name="sinopsis" id="sinopsis" class="required" > </textarea> </td>
+                        <td> <input type="button" value="Generar Sinopsis" id="generarSinopsis"  /> </td>
+                    </tr>
+                    
+                    <tr>
+                        <td></td>
+                        <td>
+                            <input type="submit" value="Registrar" />
+                            <input type="reset" value="Limpiar" />
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td></td>
+                        <td> <input type="hidden" value="registrar" name="operacion" /> </td>
+                    </tr>
+                    
+                </table>
+            </form>
+        </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" > </script>
+        <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js" > </script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                
+                $("#dataPelicula").validate();
+                nombres = ["La Monja","Animales Fantasticos","Justice League", "Venom", "Megalodon"];
+                directores = ["Boyd Holbrook", "Hayley Atwell", "Marc Forster", "Harold Cronk", "Corin Hardy"]; 
+                actores = ["Tom Hardy", "Ruben Fleischer", "Robin Givense", "Jordin Sparks", "Charlotte Hope",
+                    "Taissa Farmiga", "Jason Statham", "Masi Oka", "Keegan-Michael Key", "Olivia Munn"]; 
+                sinopsis = ["Cuando una joven monja se suicida en un aislado monasterio en Rumania, ...",
+                    "Eddie Brock (Tom Hardy) es un consolidado periodista que esta investigando ..",
+                    "Amber, una joven madre, devota y amorosa, lucha por hacer lo mejor que puede ",
+                    "Con su tripulacion atrapada en el interior, un submarino yace hundido en lo",
+                    "Desde los confines del espacio hasta las mas calles de los suburbios .."];
+                
+                $("#generarNombre").click(function() {
+                    posicion = aleatorio(0, nombres.length -1);
+                    $("#nombre").val(nombres[posicion]);
+                });
+                
+                
+                $("#generarDuracion").click(function() {
+                   hora = aleatorio(1, 2);
+                   minuto = aleatorio(0, 59);
+                   if(minuto < 10) {
+                       minuto = "0" + minuto;
+                   }
+                   $("#duracion").val(hora + ":" + minuto);
+                });
+                
+                
+                $("#generarDirector").click(function() {
+                    posicion = aleatorio(0, directores.length -1);
+                    $("#director").val(directores[posicion]);
+                });
+                
+                $("#generarActor").click(function() {
+                    posicion = aleatorio(0, actores.length -1);
+                    if($("#actores").val() == "") {
+                        $("#actores").val(actores[posicion]);
+                    } else {
+                        $("#actores").val( $("#actores").val()+ ", " + actores[posicion]);
+                    }                   
+                });
+                
+                $("#generarSinopsis").click(function() {
+                    posicion = aleatorio(0, sinopsis.length -1);
+                    $("#sinopsis").val(sinopsis[posicion]);
+                });
+                
+                function aleatorio(min, max) {
+                    return Math.round(Math.random()* (max - min) + parseInt(min));
+                }                
+                
+                
+            });
+        </script>
+    </body>
+</html>

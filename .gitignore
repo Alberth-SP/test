@@ -1,0 +1,44 @@
+# === NetBeans ===
+/nbproject/private/
+/nbproject/Makefile-*
+/nbproject/Package-*
+/dist/
+/build/
+/nbbuild/
+/nbdist/
+/.nbm/
+
+# Archivos generados
+*.class
+*.jar
+*.war
+*.ear
+*.log
+
+# === Maven ===
+/target/
+!.mvn/wrapper/maven-wrapper.jar
+
+# === Gradle ===
+/.gradle/
+/build/
+gradle-app.setting
+!gradle/wrapper/gradle-wrapper.jar
+
+# === Java ===
+*.iml
+*.iws
+*.ipr
+*.DS_Store
+*.swp
+*.swo
+
+# === IDEs (si usas más de uno) ===
+# IntelliJ
+/.idea/
+*.iml
+
+# Eclipse
+/.classpath
+/.project
+/.settings/

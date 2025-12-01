@@ -1,0 +1,76 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 30/11/2025, 09:43:27 PM
+    Author     : ACER
+*/
+
+body{
+
+    text-align: center;
+}
+
+#content {
+    width: 100%;
+}
+
+#content table{
+
+    margin: 0 auto;
+    border: 1px solid rgb(0,51,102);
+}
+
+#content table td{
+    text-align: left;
+    height: 40px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#content table td:nth-child(1){
+
+    width: 100px;
+}
+
+#content table td:nth-child(2){
+    width: 300px;
+}
+
+.grilla_cabecera{
+    text-align: center !important;
+    padding: 7px;
+    background-color: rgb(0,51,102);
+    color: white;
+    font-weight: bold;
+}
+
+input[type=text], select {
+    width: 280px;
+}
+
+textarea{
+    display: block;
+    box-sizing: border-box;
+    width: 280px;
+}
+
+input[type=submit], input[type=reset]{
+    border:none;
+    padding: 12px 30px 12px 30px;
+    background-color: rgb(0,51,102);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#GenerarNombre, #Generar Duracion, #GenerarDirector, #GenerarActor, #GenerarSinopsis{
+    border:none;
+    padding: 5px 7px 5px 7px;
+    background-color: rgba(0,51,102,0.5);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
